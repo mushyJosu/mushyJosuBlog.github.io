@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil — jou.dev</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="wrap-layout">
+    <!-- Header móvil: oculto en PC, visible en móvil -->
+    <header class="mobile-header">
+      <a href="index.html" class="logo">jou.dev</a>
+      <button id="btn-menu-mobile" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="28" height="28">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <aside class="sidebar">
+      <!-- Cabecera interna para móvil con el logo y la "X" (en PC está oculta) -->
+      <div class="sidebar-mobile-header">
+        <a href="index.html" class="logo">jou.dev</a>
+        <button id="btn-close-menu" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo de escritorio (en móvil se oculta con .sidebar-logo) -->
+      <a href="index.html" class="logo sidebar-logo">jou.dev</a>
+      <p class="text-bio">Estudiante de TI en la UPChiapas. Documento dudas, proyectos y lo que voy descubriendo en el camino.</p>
+      <hr class="divider-line">
+      <nav>
+        <a href="index.html"><span class="icon-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><span>Inicio</span></a>
+        <a href="blogs.html"><span class="icon-nav"><img src="icon/iconPosts.png" alt=""></span><span>Blogs</span></a>
+        <a href="perfil.html" class="is-active"><span class="icon-nav"><img src="icon/sobreMi.png" alt=""></span><span>Perfil</span></a>
+      </nav>
+      <hr class="divider-line">
+      <div class="social-links">
+        <a href="https://github.com/mushyJosu"><span class="icon-nav"><img src="icon/githubIcon.png" alt=""></span><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/josué-jiménez-lópez-25b51a37b/"><span class="icon-nav"><img src="icon/linkedinIcon.png" alt=""></span><span>LinkedIn</span></a>
+      </div>
+      <div class="footer-sidebar">
+        <button id="toggle-theme" aria-label="Cambiar modo claro/oscuro"><img id="icon-theme" src="icon/lunaIcon.png" alt=""></button>
+        <p class="copyright">&copy; 2026 Jou</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <!-- Flecha para volver al inicio: usa currentColor, así hereda el color de .go-back -->
+      <a href="index.html" class="go-back" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+      <!-- header: Utilizado como introducción en el contenido principal -->
+      <header class="section-hero">
+        <div class="avatar"><img src="icon/floppa.png" alt=""></div>
+        <div><h1>Jou</h1><p>Estudiante de TI · UPChiapas</p></div>
+      </header>
+
+      <div class="grid-sections">
+        <section class="card-section span-full">
+          <h2>Sobre mí</h2>
+          <p class="tagline">Hola, soy Josué, un estudiante de universidad en la UP Chiapas,
+          en este blog dev quisiera compartir una parte de mis dudas o cosas que me gustarían haber sabido al iniciar
+          en el mundo del desarrollo de software. Me gusta esuchar música en especial los Live Session, me gusta leer, en especial a los autores que tocan temas
+          un poco fuera de lo común, algo importante que mencionar es que aún estoy en progreso en tener el habito de la lectura, pero de igual forma lo intento. Me gusta ver series/animes no me considero un conocedor pero veo lo que me parece interesante.</p>
+        </section>
+
+        <section class="card-section">
+          <h2>Tecnologías</h2>
+           <ul class="list-tags">
+              <li class="tag-tech"><i><img src="icon/html.png" alt="HTML"></i> HTML</li>
+              <li class="tag-tech"><i><img src="icon/css.png" alt="CSS"></i> CSS</li>
+              <li class="tag-tech"><i><img src="icon/js.png" alt="JS"></i> JS</li>
+              <li class="tag-tech"><i><img src="icon/java.png" alt="Java"></i> Java</li>
+              <li class="tag-tech"><i><img src="icon/c++.png" alt="C++"></i> C++</li>
+              <li class="tag-tech"><i><img src="icon/git.png" alt="Git"></i> Git</li>
+          </ul>
+        </section>
+
+        <section class="card-section">
+          <h2>Certificados y cursos</h2>
+          <ul class="list-certificates">
+            <li>
+              <a href="https://www.credly.com/earner/earned/badge/728429a6-9b1d-447a-ba69-30fdd98ca77f" target="_blank" rel="noopener noreferrer" class="card-certificate">
+                <div class="cert-info">
+                  <h3>Networking Basics</h3>
+                  <p class="cert-meta">Cisco Networking Academy · 2025</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square cert-icono"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.credly.com/earner/earned/badge/eeef2efe-d634-4dd6-8422-a0c916be5224" target="_blank" rel="noopener noreferrer" class="card-certificate">
+                <div class="cert-info">
+                  <h3>AWS Academy Graduate - Cloud Foundations - Training Badge</h3>
+                  <p class="cert-meta">Amazon Web Services (AWS) · 2025</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square cert-icono"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.credly.com/earner/earned/badge/50e46480-aea1-4370-acf0-9b8daf6384a5" rel="noopener noreferrer" class="card-certificate">
+                <div class="cert-info">
+                  <h3>Operating Systems Basics</h3>
+                  <p class="cert-meta">Cisco · 2026</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square cert-icono"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.credly.com/earner/earned/badge/2ac0d517-8699-4e11-933b-beb9b0b201b7" rel="noopener noreferrer" class="card-certificate">
+                <div class="cert-info">
+                  <h3>Operating Systems Support</h3>
+                  <p class="cert-meta">Cisco · 2026</p>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square cert-icono"></i>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

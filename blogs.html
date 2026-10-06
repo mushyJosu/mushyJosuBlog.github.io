@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogs — jou.dev</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="wrap-layout">
+    <!-- Header móvil: oculto en PC, visible en móvil -->
+    <header class="mobile-header">
+      <a href="index.html" class="logo">jou.dev</a>
+      <button id="btn-menu-mobile" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="28" height="28">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <aside class="sidebar">
+      <!-- Cabecera interna para móvil con el logo y la "X" (en PC está oculta) -->
+      <div class="sidebar-mobile-header">
+        <a href="index.html" class="logo">jou.dev</a>
+        <button id="btn-close-menu" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo de escritorio (en móvil se oculta con .sidebar-logo) -->
+      <a href="index.html" class="logo sidebar-logo">jou.dev</a>
+      <p class="text-bio">Estudiante de TI en la UPChiapas. Documento dudas, proyectos y lo que voy descubriendo en el camino.</p>
+      <hr class="divider-line">
+      <nav>
+        <a href="index.html"><span class="icon-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><span>Inicio</span></a>
+        <a href="blogs.html" class="is-active"><span class="icon-nav"><img src="icon/iconPosts.png" alt=""></span><span>Blogs</span></a>
+        <a href="perfil.html"><span class="icon-nav"><img src="icon/sobreMi.png" alt=""></span><span>Perfil</span></a>
+      </nav>
+      <hr class="divider-line">
+      <div class="social-links">
+        <a href="https://github.com/mushyJosu"><span class="icon-nav"><img src="icon/githubIcon.png" alt=""></span><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/josué-jiménez-lópez-25b51a37b/"><span class="icon-nav"><img src="icon/linkedinIcon.png" alt=""></span><span>LinkedIn</span></a>
+      </div>
+      <div class="footer-sidebar">
+        <button id="toggle-theme" aria-label="Cambiar modo claro/oscuro"><img id="icon-theme" src="icon/lunaIcon.png" alt=""></button>
+        <p class="copyright">&copy; 2026 Jou</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <!-- Flecha para volver al inicio: usa currentColor, así hereda el color de .go-back -->
+      <a href="index.html" class="go-back" aria-label="Volver al inicio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+      <h1>Blogs</h1>
+      <p class="text-subtitle">Dudas, proyectos y lo que voy descubriendo.</p>
+      <div class="grid-blogs">
+        <!-- article: Identifica un contenido independiente y distribuible, como un post -->
+        <article class="card-blog">
+          <h2><a href="promesas-js.html">¿Cómo funciona una promesa en JS?</a></h2>
+          <p>Una duda que tuve armando mi API y cómo la resolví, paso a paso.</p>
+          <div class="read-post"><span class="fecha">Septiembre 2026</span><a href="promesas-js.html">Leer →</a></div>
+        </article>
+        
+        <article class="card-blog">
+          <h2><a href="id-vs-clase.html">Entendiendo id vs clase en CSS</a></h2>
+          <p>Lo que me costó entender, con ejemplos aplicados a un esqueleto real.</p>
+          <div class="read-post"><span class="fecha">Octubre 2026</span><a href="id-vs-clase.html">Leer →</a></div>
+        </article>
+      </div>
+    </main>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

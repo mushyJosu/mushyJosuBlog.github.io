@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Cómo funciona una promesa en JS? — jou.dev</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <div class="wrap-post">
+    <!-- Header móvil: oculto en PC, visible en móvil -->
+    <header class="mobile-header">
+      <a href="index.html" class="logo">jou.dev</a>
+      <button id="btn-menu-mobile" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="28" height="28">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <aside class="sidebar">
+      <!-- Cabecera interna para móvil con el logo y la "X" (en PC está oculta) -->
+      <div class="sidebar-mobile-header">
+        <a href="index.html" class="logo">jou.dev</a>
+        <button id="btn-close-menu" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo de escritorio (en móvil se oculta con .sidebar-logo) -->
+      <a href="index.html" class="logo sidebar-logo">jou.dev</a>
+      <p class="text-bio">Estudiante de TI en la UPChiapas. Documento dudas, proyectos y lo que voy descubriendo en el camino.</p>
+      <hr class="divider-line">
+      <nav>
+        <a href="index.html"><span class="icon-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><span>Inicio</span></a>
+        <a href="blogs.html" class="is-active"><span class="icon-nav"><img src="icon/iconPosts.png" alt=""></span><span>Blogs</span></a>
+        <a href="perfil.html"><span class="icon-nav"><img src="icon/sobreMi.png" alt=""></span><span>Perfil</span></a>
+      </nav>
+      <hr class="divider-line">
+      <div class="social-links">
+        <a href="https://github.com/mushyJosu"><span class="icon-nav"><img src="icon/githubIcon.png" alt=""></span><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/josué-jiménez-lópez-25b51a37b/"><span class="icon-nav"><img src="icon/linkedinIcon.png" alt=""></span><span>LinkedIn</span></a>
+      </div>
+      <div class="footer-sidebar">
+        <button id="toggle-theme" aria-label="Cambiar modo claro/oscuro"><img id="icon-theme" src="icon/lunaIcon.png" alt=""></button>
+        <p class="copyright">&copy; 2026 Jou</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+        <a href="index.html" class="go-back">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+
+      <!-- <-- Inicia el contenido textual del post -->
+      <article class="post">
+        <h1 id="titulo">¿Cómo funciona una promesa en JS?</h1>
+        <p class="fecha">Septiembre 2026</p>
+        <!-- Tabla de contenido móvil: details abre y cierra solo, sin JS (en PC se oculta) -->
+        <details class="toc-mobile">
+          <summary>Tabla de contenido</summary>
+          <a href="#titulo">Introducción</a>
+          <a href="#que-es-una-promesa">¿Qué es una promesa?</a>
+          <a href="#then-y-catch">Then y catch</a>
+        </details>
+        <p>Esta duda me la planteé armando la parte de fetch de un proyecto: pedía datos a una API y no entendía por qué mi código intentaba usarlos antes de que llegaran. Investigando, encontré que la respuesta está en cómo funcionan las promesas en JavaScript.</p>
+
+        <h1 id="que-es-una-promesa">¿Qué es una promesa?</h1>
+        <p>Imagina que pides comida a domicilio. Te dan un número de pedido al instante, pero la comida no llega en ese momento — llega después. Ese número de pedido es, más o menos, lo que es una promesa: un objeto que representa un valor que <em>todavía no existe</em>, pero que existirá (o fallará) en el futuro.</p>
+        <p>Una promesa siempre está en uno de estos 3 estados:</p>
+        <ul>
+          <li><strong>pending</strong> (pendiente): todavía no se sabe el resultado</li>
+          <li><strong>fulfilled</strong> (cumplida): todo salió bien</li>
+          <li><strong>rejected</strong> (rechazada): algo falló</li>
+        </ul>
+
+        <!-- <-- pre: Contenedor para texto preformateado (código) -->
+        <pre><code class="language-javascript">const promesa = new Promise((resolve, reject) => {
+  const exito = true;
+
+  if (exito) {
+    resolve('¡Listo!');
+  } else {
+    reject('Algo salió mal');
+  }
+});</code></pre>
+
+        <h1 id="then-y-catch">Then y catch</h1>
+        <p>Una vez que tienes una promesa, usas <code>.then()</code> para decir "cuando esto se resuelva bien, haz esto", y <code>.catch()</code> para "si algo falla, haz esto otro":</p>
+
+        <pre><code class="language-javascript">promesa
+  .then((resultado) => {
+    console.log(resultado); // "¡Listo!"
+  })
+  .catch((error) => {
+    console.error(error);
+  });</code></pre>
+
+        <p>Así se ve aplicado a una petición real con <code>fetch</code>, que es justo la duda que me hizo escribir este post:</p>
+
+        <pre><code class="language-javascript">fetch('https://api.ejemplo.com/datos')
+  .then((respuesta) => respuesta.json())
+  .then((datos) => {
+    console.log(datos);
+  })
+  .catch((error) => {
+    console.error('Hubo un error:', error);
+  });</code></pre>
+
+        <p>La primera vez que vi esto no entendía por qué había <strong>dos</strong> <code>.then()</code> seguidos — ahora sé que el primero convierte la respuesta cruda en JSON (que también toma tiempo, por eso es otra promesa), y el segundo ya trabaja con los datos listos.</p>
+      </article>
+
+      <nav class="post-nav">
+        <a href="blogs.html"><i class="fas fa-arrow-left"></i> anterior</a>
+        <a href="id-vs-clase.html">siguiente <i class="fas fa-arrow-right"></i></a>
+      </nav>
+
+      <section class="comentarios">
+        <script src="https://utteranc.es/client.js"
+          repo="mushyJosu/mushyJosu.github.io"
+          issue-term="pathname"
+          label="Comment"
+          theme="icy-dark"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </section>
+    </main>
+
+    <!-- <-- Menú lateral derecho que interactúa con JS -->
+    <aside class="table-contents">
+        <p class="titulo">Tabla de contenido</p>
+        <a href="#titulo">Introducción</a>
+        <a href="#que-es-una-promesa">¿Qué es una promesa?</a>
+        <a href="#then-y-catch">Then y catch</a>
+    </aside>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jou.dev</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <!-- div contenedor grid global -->
+  <div class="wrap-layout">
+    <!-- Header móvil: oculto en PC, visible en móvil -->
+    <header class="mobile-header">
+      <a href="index.html" class="logo">jou.dev</a>
+      <button id="btn-menu-mobile" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="28" height="28">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <!-- aside: Representa contenido que está indirectamente relacionado, como barras laterales -->
+    <aside class="sidebar">
+      <!-- Cabecera interna para móvil con el logo y la "X" (en PC está oculta) -->
+      <div class="sidebar-mobile-header">
+        <a href="index.html" class="logo">jou.dev</a>
+        <button id="btn-close-menu" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo de escritorio (en móvil se oculta con .sidebar-logo) -->
+      <a href="index.html" class="logo sidebar-logo">jou.dev</a>
+      <p class="text-bio">Estudiante de TI en la UPChiapas. Documento dudas, proyectos y lo que voy descubriendo en el camino.</p>
+      <hr class="divider-line">
+      
+      <!-- nav: Agrupa los enlaces de navegación principales -->
+      <nav>
+        <!-- svg: Gráfica Vectorial Escalable, código puro que dibuja íconos -->
+        <a href="index.html" class="is-active"><span class="icon-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><span>Inicio</span></a>
+        <a href="blogs.html"><span class="icon-nav"><img src="icon/iconPosts.png" alt=""></span><span>Blogs</span></a>
+        <a href="perfil.html"><span class="icon-nav"><img src="icon/sobreMi.png" alt=""></span><span>Perfil</span></a>
+      </nav>
+      <hr class="divider-line">
+      
+      <div class="social-links">
+        <a href="https://github.com/mushyJosu"><span class="icon-nav"><img src="icon/githubIcon.png" alt=""></span><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/josué-jiménez-lópez-25b51a37b/"><span class="icon-nav"><img src="icon/linkedinIcon.png" alt=""></span><span>LinkedIn</span></a>
+      </div>
+      
+      <div class="footer-sidebar">
+        <button id="toggle-theme" aria-label="Cambiar modo claro/oscuro"><img id="icon-theme" src="icon/lunaIcon.png" alt=""></button>
+        <p class="copyright">&copy; 2026 Jou</p>
+      </div>
+    </aside>
+
+    <!-- main: Identifica el contenido principal único de tu documento -->
+    <main class="main-content">
+      <!-- section: Agrupa contenido temático, en este caso la presentación inicial -->
+      <section class="section-hero">
+        <div class="avatar"><img src="icon/floppa.png" alt=""></div>
+        <div>
+          <h1>Hola, soy Jou</h1>
+          <p>Estudiante de Tecnologías de la Información e Innovación Digital · UPChiapas</p>
+          <div class="group-buttons"><a class="click-btn" href="blogs.html">Ver blogs</a><a class="click-btn click-btn-outline" href="perfil.html">Mi perfil</a></div>
+        </div>
+      </section>
+
+      <div class="header-section"><h2>Últimos blogs</h2><a class="tag-tech" href="blogs.html">Todos los blogs</a></div>
+      <a class="row-link" href="promesas-js.html">
+        <span class="icon-row"><i><img src="icon/js.png" alt="JS"></i></span>
+        <div>
+          <h3>¿Cómo funciona una promesa en JS?</h3>
+          <p class="fecha">Septiembre 2026</p>
+        </div>
+      </a>
+
+      <a class="row-link" href="id-vs-clase.html">
+        <span class="icon-row"><i><img src="icon/css.png" alt="CSS"></i></span>
+        <div>
+          <h3>Entendiendo id vs clase en CSS</h3>
+          <p class="fecha">Octubre 2026</p>
+        </div>
+      </a>
+
+      <h2>Tecnologías</h2>
+      <!-- ul: Lista desordenada para organizar etiquetas -->
+      <ul class="list-tags">
+         <li class="tag-tech"><i><img src="icon/html.png" alt="HTML"></i> HTML</li>
+         <li class="tag-tech"><i><img src="icon/css.png" alt="CSS"></i> CSS</li>
+         <li class="tag-tech"><i><img src="icon/js.png" alt="JS"></i> JS</li>
+         <li class="tag-tech"><i><img src="icon/java.png" alt="Java"></i> Java</li>
+         <li class="tag-tech"><i><img src="icon/c++.png" alt="C++"></i> C++</li>
+         <li class="tag-tech"><i><img src="icon/git.png" alt="Git"></i> Git</li>
+      </ul>
+
+    </main>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

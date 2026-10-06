@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entendiendo id vs clase en CSS — jou.dev</title>
+  <!-- <-- Fuentes de iconos y estilos para resaltar el código (Prism) --> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <!-- <-- Contenedor principal con grid para los posts --> 
+  <div class="wrap-post">
+    <!-- Este header irá oculto en PC y visible en Móvil -->
+        <header class="mobile-header">
+        <a href="index.html" class="logo">jou.dev</a>
+        <!-- Botón de hamburguesa -->
+        <button id="btn-menu-mobile" aria-label="Abrir menú">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+        </header> 
+    <!-- <-- Barra lateral de navegación --> 
+    <aside class="sidebar">
+      <!-- Cabecera interna para móvil con el logo y la "X" (en PC está oculta) -->
+      <div class="sidebar-mobile-header">
+        <a href="index.html" class="logo">jou.dev</a>
+        <button id="btn-close-menu" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo de escritorio (en móvil se oculta con .sidebar-logo) -->
+      <a href="index.html" class="logo sidebar-logo">jou.dev</a>
+      <p class="text-bio">Estudiante de TI en la UPChiapas. Documento dudas, proyectos y lo que voy descubriendo en el camino.</p>
+      <hr class="divider-line">
+      <nav>
+        <a href="index.html"><span class="icon-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><span>Inicio</span></a>
+        <!-- <-- La clase is-active resalta la página actual --> 
+        <a href="blogs.html" class="is-active"><span class="icon-nav"><img src="icon/iconPosts.png" alt=""></span><span>Blogs</span></a>
+        <a href="perfil.html"><span class="icon-nav"><img src="icon/sobreMi.png" alt=""></span><span>Perfil</span></a>
+      </nav>
+      <hr class="divider-line">
+      <div class="social-links">
+        <a href="https://github.com/mushyJosu"><span class="icon-nav"><img src="icon/githubIcon.png" alt=""></span><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/josué-jiménez-lópez-25b51a37b/"><span class="icon-nav"><img src="icon/linkedinIcon.png" alt=""></span><span>LinkedIn</span></a>
+      </div>
+      <div class="footer-sidebar">
+        <button id="toggle-theme" aria-label="Cambiar modo claro/oscuro"><img id="icon-theme" src="icon/lunaIcon.png" alt=""></button>
+        <p class="copyright">&copy; 2026 Jou</p>
+      </div>
+    </aside>
+
+    <!-- <-- Contenido principal del blog --> 
+    <main class="main-content">
+        <!-- <-- Botón para regresar a la lista de blogs --> 
+        <a href="blogs.html" class="go-back">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+
+      <!-- <-- Etiqueta article para contenido independiente --> 
+      <article class="post">
+        <h1 id="titulo">Entendiendo id vs clase en CSS</h1>
+        <p class="fecha">Octubre 2026</p>
+        <!-- Tabla de contenido móvil: details abre y cierra solo, sin JS (en PC se oculta) -->
+        <details class="toc-mobile">
+          <summary>Tabla de contenido</summary>
+          <a href="#titulo">Introducción</a>
+          <a href="#la-clase">La Clase (class)</a>
+          <a href="#el-id">El Identificador (id)</a>
+          <a href="#especificidad">¿Quién gana la pelea?</a>
+        </details>
+        <p>Cuando empecé a maquetar mis primeros proyectos, le ponía <code>id</code> a todo o <code>class</code> a todo sin saber realmente la diferencia. Hasta que mi CSS se volvió un desastre y no entendía por qué unos estilos no se aplicaban. Aquí te explico lo que me costó entender, con un ejemplo súper práctico.</p>
+
+        <h1 id="la-clase">La Clase (class) = El Uniforme</h1>
+        <p>Piensa en las clases como un <strong>uniforme de la universidad</strong>. Muchos estudiantes pueden usar exactamente el mismo uniforme. En HTML y CSS, usamos una clase cuando queremos que <em>varios elementos</em> compartan el mismo estilo. En CSS se seleccionan poniendo un punto <code>.</code> al principio.</p>
+        
+        <p>Por ejemplo, si tienes varios botones que deben verse igual:</p>
+
+        <!-- <-- Bloque de código HTML --> 
+        <pre><code class="language-html">&lt;!-- Varios elementos pueden tener la misma clase --&gt;
+&lt;button class="btn-primario"&gt;Aceptar&lt;/button&gt;
+&lt;button class="btn-primario"&gt;Enviar&lt;/button&gt;
+&lt;button class="btn-primario"&gt;Descargar&lt;/button&gt;</code></pre>
+
+        <!-- <-- Bloque de código CSS --> 
+        <pre><code class="language-css">/* Se selecciona con un punto (.) */
+.btn-primario {
+  background-color: #742977;
+  color: white;
+  border-radius: 8px;
+}</code></pre>
+
+        <h1 id="el-id">El Identificador (id) = Tu Matrícula</h1>
+        <p>Por otro lado, el <code>id</code> es como tu <strong>número de matrícula o tu INE</strong>. Es único e irrepetible. <em>Ningún otro elemento en toda tu página</em> debería tener el mismo <code>id</code>. En CSS se seleccionan usando el símbolo de gato o hashtag <code>#</code>.</p>
+        
+        <p>Se utiliza para partes estructurales únicas (como una barra de navegación principal) o cuando necesitas que JavaScript encuentre un elemento específico de inmediato.</p>
+
+        <pre><code class="language-html">&lt;!-- Solo debe existir un elemento con este id en toda la página --&gt;
+&lt;nav id="menu-principal"&gt;
+  &lt;!-- Enlaces del menú --&gt;
+&lt;/nav&gt;</code></pre>
+
+        <pre><code class="language-css">/* Se selecciona con un hashtag (#) */
+#menu-principal {
+  border-bottom: 1px solid #34322f;
+  position: sticky;
+}</code></pre>
+
+        <h1 id="especificidad">¿Quién gana la pelea? (Especificidad)</h1>
+        <p>Aquí es donde las cosas fallan cuando vas empezando. ¿Qué pasa si un elemento tiene tanto un <code>id</code> como una <code>class</code>, y ambos intentan cambiar el color de fondo a un color distinto?</p>
+        
+        <p><strong>El <code>id</code> siempre gana.</strong> En CSS, los identificadores tienen un "peso" mayor que las clases. Por esta razón, la buena práctica actual es <em>usar clases para casi todos tus estilos</em>, y dejar los <code>id</code> exclusivamente para enlaces ancla (como los de la tabla de contenido) o para manipular el DOM con JavaScript.</p>
+
+      </article>
+
+      <!-- <-- Navegación entre posts --> 
+      <nav class="post-nav">
+        <a href="promesas-js.html"><i class="fas fa-arrow-left"></i> anterior</a>
+        <a href="#">siguiente <i class="fas fa-arrow-right"></i></a>
+      </nav>
+
+      <!-- <-- Sección de comentarios conectada a GitHub --> 
+      <section class="comentarios">
+        <script src="https://utteranc.es/client.js"
+          repo="mushyJosu/mushyJosu.github.io"
+          issue-term="pathname"
+          label="Comment"
+          theme="icy-dark"
+          crossorigin="anonymous"
+          async>
+        </script>
+      </section>
+    </main>
+
+    <!-- <-- Menú lateral derecho para navegar dentro del post --> 
+    <aside class="table-contents">
+        <p class="titulo">Tabla de contenido</p>
+        <!-- <-- Los href apuntan a los id de los <h1> en el article --> 
+        <a href="#titulo">Introducción</a>
+        <a href="#la-clase">La Clase (class)</a>
+        <a href="#el-id">El Identificador (id)</a>
+        <a href="#especificidad">¿Quién gana la pelea?</a>
+    </aside>
+  </div>
+
+  <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+</body>
+</html>
